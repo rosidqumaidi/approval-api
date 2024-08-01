@@ -12,8 +12,7 @@ class ApprovalStage extends Model
     protected $table = 'approval_stages';
 
     protected $fillable = [
-        'approver_id',
-        'stage'
+        'approver_id'
     ];
 
     public function approver()
