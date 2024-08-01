@@ -114,12 +114,7 @@ class ExpenseController extends Controller
 
     public function approve(ApproveExpenseRequest $request, $id)
     {
-        $request->validate([
-            'approver_id' => 'required|exists:approvers,id',
-        ]);
-
         $approval = $this->expenseRepository->approve($id, $request->approver_id);
-
         return response()->json($approval, 200);
     }
 }

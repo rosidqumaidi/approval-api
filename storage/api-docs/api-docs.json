@@ -36,8 +36,56 @@
                                 "schema": {
                                     "properties": {
                                         "success": {
-                                            "type": "integer",
+                                            "type": "string",
                                             "example": "Approval stage created successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/approvers": {
+            "post": {
+                "summary": "Create an Approver",
+                "description": "Create an Approver",
+                "operationId": "a836abdef58f37c099e9d34a268c8ca8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Approver Name",
+                                        "type": "string",
+                                        "example": "Ani"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Approvar created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "string",
+                                            "example": "Approvar created successfully"
                                         }
                                     },
                                     "type": "object"

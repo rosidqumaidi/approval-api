@@ -52,7 +52,7 @@ class ApprovalController extends Controller
      *     response=201,
      *     description="Approval stage created successfully",
      *     @OA\JsonContent(
-     *       @OA\Property(property="success", type="integer", example="Approval stage created successfully"),
+     *       @OA\Property(property="success", type="string", example="Approval stage created successfully"),
      *     )
      *   ),
      *   @OA\Response(response=400, description="Bad Request"),

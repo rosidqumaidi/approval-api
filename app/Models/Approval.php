@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Approval extends Model
 {
+    protected $fillable = ['expense_id', 'approver_id', 'status_id'];
     use HasFactory;
 
     public function expense()

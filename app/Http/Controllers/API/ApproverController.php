@@ -22,7 +22,37 @@ class ApproverController extends Controller
         $this->approverRepository = $approverRepository;
     }
 
-    // Metode untuk menyimpan approver
+    /**
+     * @OA\Post(
+     *   path="/api/approvers",
+     *   summary="Create an Approver",
+     *   description="Create an Approver",
+     *   @OA\RequestBody(
+     *     required=true,
+     *     @OA\MediaType(
+     *       mediaType="application/x-www-form-urlencoded",
+     *       @OA\Schema(
+     *         @OA\Property(
+     *           property="name",
+     *           description="Approver Name",
+     *           type="string",
+     *           example="Ani"
+     *         )
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response=201,
+     *     description="Approvar created successfully",
+     *     @OA\JsonContent(
+     *       @OA\Property(property="success", type="string", example="Approvar created successfully"),
+     *     )
+     *   ),
+     *   @OA\Response(response=400, description="Bad Request"),
+     *   @OA\Response(response=500, description="Internal Server Error")
+     * 
+     * )
+     */
     public function storeApprover(StoreApproverRequest $request): JsonResponse
     {
         try {
