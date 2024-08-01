@@ -5,6 +5,8 @@ namespace App\Repositories;
 use App\Models\Expense;
 use App\Models\Status;
 use App\Models\Approval;
+use App\Models\ApprovalStage;
+
 class ExpenseRepository implements ExpenseRepositoryInterface
 {
     public function all()
@@ -32,7 +34,25 @@ class ExpenseRepository implements ExpenseRepositoryInterface
     {
         $expense = $this->find($id);
 
-        $currentStage = Approval::where('expense_id', $id)->orderBy('id', 'desc')->first();
+        
+        $approval = Approval::where(['expense_id' => $id, 'approver_id' => $approverId])->orderBy('id', 'desc')->first();
+        $newApproval = Approval::create([
+            'expense_id' => $id,
+            'approver_id' => $approverId,
+            'status_id' => 2,
+        ]);
+
+        // get last approval
+        $lastApprover = ApprovalStage::orderBy('id', 'desc')->first();
+        
+        if ($approverId == $lastApprover->approver_id) {
+            $e = Expense::find($id);
+            $e->status_id = 2;
+            $e->save();
+        }
+        return $newApproval;
+        
+        /* $currentStage = Approval::where('expense_id', $id)->orderBy('id', 'desc')->first();
         $nextStage = Approval::where('expense_id', $id)->where('id', '>', $currentStage->id)->first();
 
         if ($currentStage->approver_id != $approverId) {
@@ -47,7 +67,7 @@ class ExpenseRepository implements ExpenseRepositoryInterface
 
         $expense->update(['status_id' => 2]);
 
-        return $currentStage;
+        return $currentStage; */
     }
 }
 
