@@ -6,7 +6,8 @@ use App\Models\ApprovalStage;
 
 interface ApprovalStageRepositoryInterface
 {
+    public function all();
+    public function find($id);
     public function createApprovalStage(array $data): ApprovalStage;
-
     public function editApprovalStage(int $id, int $approver_id): ApprovalStage;
 }

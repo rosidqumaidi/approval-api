@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('expense/{id}', [ExpenseController::class, 'show']);
     
     // Rute untuk menyetujui pengeluaran
-    Route::patch('expense/{id}/approve', [ApprovalController::class, 'approve']);
+    Route::patch('expense/{id}/approve', [ExpenseController::class, 'approve']);
     
     // Rute untuk mengelola approver
     Route::post('approvers', [ApproverController::class, 'storeApprover']);
