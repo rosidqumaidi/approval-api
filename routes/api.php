@@ -28,10 +28,11 @@ use Illuminate\Support\Facades\Route;
     // Rute untuk menyetujui pengeluaran
     Route::patch('expense/{id}/approve', [ApprovalController::class, 'approve']);
     
-    // Rute untuk mengelola approver
-    Route::post('approvers', [ApproverController::class, 'storeApprover']);
-    
     // Rute untuk mengelola tahap approval
     Route::post('approval-stages', [ApprovalController::class, 'storeApprovalStage']);
     Route::put('approval-stages/{id}', [ApprovalController::class, 'updateApprovalStage']);
+
+    // Rute untuk mengelola approver
+    Route::post('approvers', [ApproverController::class, 'storeApprover']);
+    
 

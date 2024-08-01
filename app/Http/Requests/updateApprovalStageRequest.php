@@ -7,9 +7,8 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
-class updateApprovalStageRequest extends FormRequest
+class UpdateApprovalStageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,14 +27,8 @@ class updateApprovalStageRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('approval_stage');
-
         return [
-            'approver_id' => [
-                'required',
-                'exists:approvers,id',
-                Rule::unique('approval_stages', 'approver_id')->ignore($id)
-            ],
+            'approver_id' => 'required|exists:approvers,id',
         ];
     }
 
@@ -43,8 +36,7 @@ class updateApprovalStageRequest extends FormRequest
     {
         return [
             'approver_id.required' => 'ID approver tidak boleh kosong.',
-            'approver_id.exists' => 'ID approver tidak ditemukan.',
-            'approver_id.unique' => 'ID approver sudah ada.'
+            'approver_id.exists' => 'ID approver tidak ditemukan.'
         ];
     }
 

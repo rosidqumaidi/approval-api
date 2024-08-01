@@ -45,8 +45,10 @@ class ApprovalController extends Controller
     public function updateApprovalStage(UpdateApprovalStageRequest $request, $id): JsonResponse
     {
         try {
-            $updatedApprovalStage = $this->approvalStageRepository->editApprovalStage($request->validated(), $id);
+            // $approver_id = $request->validated()['approver_id'];
 
+            $updatedApprovalStage = $this->approvalStageRepository->editApprovalStage($id, $request->validated());
+    
             return $this->successResponse($updatedApprovalStage);
         } catch (Exception $e) {
             return $this->errorResponse('Terjadi kesalahan saat memperbarui data.', 500);
