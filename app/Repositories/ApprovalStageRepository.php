@@ -11,10 +11,10 @@ class ApprovalStageRepository implements ApprovalStageRepositoryInterface
         return ApprovalStage::create($data);
     }
 
-    public function updateApprovalStage(int $id, array $data): ApprovalStage
+    public function editApprovalStage(int $id, int $approver_id): ApprovalStage
     {
         $approvalStage = ApprovalStage::findOrFail($id);
-        $approvalStage->update($data);
+        $approvalStage->update($approver_id);
 
         return $approvalStage;
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\ApprovalController;
+use App\Http\Controllers\API\ApproverController;
 use App\Http\Controllers\API\ExpenseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,7 @@ use Illuminate\Support\Facades\Route;
     Route::patch('expense/{id}/approve', [ApprovalController::class, 'approve']);
     
     // Rute untuk mengelola approver
-    Route::post('approvers', [ApprovalController::class, 'storeApprover']);
+    Route::post('approvers', [ApproverController::class, 'storeApprover']);
     
     // Rute untuk mengelola tahap approval
     Route::post('approval-stages', [ApprovalController::class, 'storeApprovalStage']);
