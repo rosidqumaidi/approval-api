@@ -16,7 +16,6 @@ class CreateApprovalStagesTable extends Migration
         Schema::create('approval_stages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('approver_id')->constrained();
-            $table->integer('stage')->unique();
             $table->timestamps();
         });
     }
