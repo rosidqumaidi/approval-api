@@ -21,18 +21,14 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-    // Rute untuk mengelola pengeluaran
     Route::post('expense', [ExpenseController::class, 'store']);
     Route::get('expense/{id}', [ExpenseController::class, 'show']);
     
-    // Rute untuk menyetujui pengeluaran
     Route::patch('expense/{id}/approve', [ExpenseController::class, 'approve']);
     
-    // Rute untuk mengelola tahap approval
     Route::post('approval-stages', [ApprovalController::class, 'storeApprovalStage']);
     Route::put('approval-stages/{id}', [ApprovalController::class, 'updateApprovalStage']);
 
-    // Rute untuk mengelola approver
     Route::post('approvers', [ApproverController::class, 'storeApprover']);
     
 

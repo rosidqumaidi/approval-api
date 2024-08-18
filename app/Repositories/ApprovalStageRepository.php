@@ -26,7 +26,6 @@ class ApprovalStageRepository implements ApprovalStageRepositoryInterface
     {
         $approvalStage = $this->find($id);
 
-        // Cek jika approvalStage tidak ditemukan
         if (!$approvalStage) {
             throw new ModelNotFoundException('Approval stage not found.');
         }
